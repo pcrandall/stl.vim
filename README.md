@@ -1,4 +1,4 @@
-# stl.vim
+# stl.vim (DONT USE THIS)
 
 Vim mode for editing siemens stl source code files
 

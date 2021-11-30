@@ -1,0 +1,49 @@
+FUNCTION function1 : VOID
+TITLE =DESCRIPTIVE_TITLE
+//	COMMENT
+//	COMMENT
+//	COMMENT
+AUTHOR      : X
+FAMILY      : X
+NAME        : X
+VERSION     : X
+
+VAR_INPUT
+      Timer        : TIMER;          //	COMMENT
+      V           : BOOL;           //	COMMENT
+      F           : BOOL;           //	COMMENT
+      C           : INT;            //	COMMENT
+END_VAR
+VAR_OUTPUT
+      S           : BOOL;           //	COMMENT
+END_VAR
+VAR_TEMP
+	TimerS5T	: S5TIME;		//	COMMENT
+	TimerS5T_1	: S5TIME;		//	COMMENT
+	Int_1	: INT;		//	COMMENT
+END_VAR
+
+BEGIN
+NETWORK
+TITLE =DESCRIPTIVE_TITLE
+	UN	V;
+	R	Timer;
+
+NETWORK
+TITLE =DESCRIPTIVE_TITLE
+	L	C;
+	T	Int_1;
+
+	L	C;
+	L	32767;			//	COMMENT
+	>I	;
+	SPBN	01;
+	L	32767;
+	T	Int_1;
+
+01:	L	C;
+	L	0;
+	<I	;
+	SPBN	02;
+	L	0;
+	T	Int_1;
