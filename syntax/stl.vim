@@ -5,7 +5,8 @@ endif
 syn keyword stlDataType BOOL BYTE WORD DWORD INT DINT REAL S5TIME TIME DATE CHAR TIMER ANY POINTER VOID
 syn keyword stlNetwork NETWORK
 syn keyword stlConfig  AUTHOR FAMILY NAME VERSION BEGIN
-syn keyword stlInstructions ) )MCR *D *I *R + +AR1 +AR2 +D +I +R /D /I /R <=D <=I <=R <>D <>I <>R <D <I <R = ==D ==I ==R >=D >=I >=R >D >I >R A A( ABS ACOS AD AN AN( ASIN ATAN AUF AW BE BEA BEB BEC BEU BLD BTD BTI CAD CALL CAR CAW CC CD CDB CLR COS CU DEC DTB DTR ENT EXP FN FP FR INC INVD INVI ITB ITD JBI JC JCB JCN JL JM JMZ JN JNB JNBI JO JOS JP JPZ JU JUO JZ L LAR1 LAR1<D> LAR1AR LAR1AR2 LAR2 LAR2<D> LC LDBLG LDBNO LDILG LDINO LEAVE LN LOOP LSTW MCR( MCRA MCRD MOD NEGD NEGI NEGR NOP0 NOP1 NOT O O( OD ON ON( OPN OW POP PUSH R RLD RLDA RND RND+ RND– RRD RRDA S SA SAVE SD SE SET SF SI SIN SLD SLW SP SPA SPB SPBB SPBI SPBIN SPBN SPBNB SPL SPM SPMZ SPN SPO SPP SPPZ SPS SPU SPZ SQR SQRT SRD SRW SS SSD SSI SV T TAD TAK TAN TAR TAR1 TAR2 TAW TDB TRUNC TSTW U U( UC UD UN UN( UW X X( XN XN( XOD XOW ZR ZV –D –I –R
+syn keyword stlInstructions A ABS ACOS AD AN ASIN ATAN AUF AW BE BEA BEB BEC BEU BLD BTD BTI CAD CALL CAR CAW CC CD CDB CLR COS CU DEC DTB DTR ENT EXP FN FP FR INC INVD INVI ITB ITD JBI JC JCB JCN JL JM JMZ JN JNB JNBI JO JOS JP JPZ JU JUO JZ L LAR1 LAR1AR LAR1AR2 LAR2 LC LDBLG LDBNO LDILG LDINO LEAVE LN LOOP LSTW MCRA MCRD MOD NEGD NEGI NEGR NOP0 NOP1 NOT O OD ON OPN OW POP PUSH R RLD RLDA RND RRD RRDA S SA SAVE SD SE SET SF SI SIN SLD SLW SP SPA SPB SPBB SPBI SPBIN SPBN SPBNB SPL SPM SPMZ SPN SPO SPP SPPZ SPS SPU SPZ SQR SQRT SRD SRW SS SSD SSI SV T TAD TAK TAN TAR TAR1 TAR2 TAW TDB TRUNC TSTW U UC UD UN UW X XN XOD XOW ZR ZV
+syn match stlOperation ")" ")MCR" "*D" "*I" "*R" "+" "+AR1" "+AR2" "+D" "+I" "+R" "/D" "/I" "/R" "<=D" "<=I" "<=R" "<>D" "<>I" "<>R" "<D" "<I" "<R" "=" "==D" "==I" "==R" ">=D" ">=I" ">=R" ">D" "\>I" ">R" "A(" "AN(" "LAR1<D>" "LAR2<D>" "MCR(" "O(" "ON(" "U(" "UN(" "X(" "XN(" "–D" "–I" "–R"
 
 " syn keyword stlReg a b c d f h l z
 syn match stlComment "//.*$"
@@ -25,8 +26,6 @@ syn region stlLabel start="^[a-zA-Z0-9_]" end=":" oneline contains=stlLabelName,
 syn region stlAddr start='\[' end='\]' contains=stlNumber
 syn region stlString start='"' end='"'
 
-
-
 let b:current_syntax = "stl"
 hi def link stlComment      Comment
 hi def link stlLabelName    Todo
@@ -38,6 +37,7 @@ hi def link stlConfig       PreProc
 hi def link stlNumber       Number
 hi def link stlString       String
 hi def link stlInstructions Statement
+hi def link stlOperation    Statement
 hi def link stlExpressions  Underlined
 hi def link stlTitle        String
 

@@ -1,2 +1,3 @@
-autocmd BufRead,BufNewFile *.awl setf awl
-autocmd BufRead,BufNewFile *.AWL setf awl
+autocmd BufRead,BufNewFile *.awl setf stl
+autocmd BufRead,BufNewFile *.AWL setf stl
+
