@@ -3,7 +3,8 @@ if exists("b:current_syntax")
 endif
 
 syn keyword stlDataType BOOL BYTE WORD DWORD INT DINT REAL S5TIME TIME DATE CHAR TIMER ANY POINTER VOID ARRAY OF
-syn keyword stlNetwork NETWORK BEGIN
+syn keyword stlNetwork NETWORK
+syn keyword stlBegin BEGIN
 syn keyword stlConfig  AUTHOR FAMILY NAME VERSION
 syn keyword stlBlockType  FUNCTION FUNCTION_BLOCK DATA_BLOCK
 syn keyword stlBlockType  END_FUNCTION END_FUNCTION_BLOCK END_DATA_BLOCK
@@ -25,14 +26,17 @@ syn match stlNumber "W#[0-9a-fA-F]\+#[0-9a-fA-F]\+"
 syn match stlNumber "\d\+\.\d*"
 syn match stlLabelName "^[a-zA-Z0-9_]\+:" contained
 syn match stlTitle 'TITLE.*$'
-syn match stlPointer "P#[#a-zA-Z0-9]*"
-
+syn match stlPointer "P#[#a-zA-Z0-9\.]*"
+syn match stlDeclaration "^\s*[a-zA-Z0-9_]*\:"
+syn match stlAssignment "\s*[a-zA-Z0-9_ ]*\s\:"
 
 syn match stlArr "\[.*\]"
 
-" syn region stlAssignment start="\s[^\s]" end=";" oneline contains=stlNumber,stlAssignment,stlComment,stlInstructions,stlOp,stlDataType,stlPointer,stlArr
 syn region stlString start='"' end='"'
 syn region stlLabel start="^[a-zA-Z0-9_]" end=":" oneline contains=stlLabelName,stlInstructions,stlNumber,stlComment,stlOp,stlAssignment,stlArr,stlPointer
+
+
+syntax cluster stlExpressions contains=@stlAssignment,@stlTypeItems,@stlVarItems
 
 let b:current_syntax = "stl"
 hi def link stlComment      Comment
@@ -45,9 +49,10 @@ hi def link stlIOType       Constant
 hi def link stlNumber       Number
 hi def link stlString       String
 hi def link stlTitle        Underlined
-hi def link stlInstructions Statement
-hi def link stlOp           Statement
-hi def link stlLabel        Identifier
-hi def link stlAssignment   Identifier
+hi def link stlInstructions Keyword
+hi def link stlOp           Keyword
+hi def link stlDeclaration  Identifier
 hi def link stlArr          Number
 hi def link stlPointer      Constant
+hi def link stlAssignment   Identifier
+hi def link stlArguments    String
